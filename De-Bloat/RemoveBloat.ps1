@@ -1,4 +1,5 @@
 <#
+ .Edited by Adam for use inside program's 365 tenant
 .SYNOPSIS
 .Removes bloat from a fresh Windows build
 .DESCRIPTION
@@ -1085,7 +1086,7 @@ if ($version -like "*Windows 11*") {
 
     if ($nonAdminLoggedOn -eq $false) {
         MkDir -Path "C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState" -Force -ErrorAction SilentlyContinue | Out-Null
-        $starturl = "https://github.com/andrew-s-taylor/public/raw/main/De-Bloat/start2.bin"
+        $starturl = "https://github.com/unwrapsodding/public-forked/blob/main/De-Bloat/start2.bin"
         invoke-webrequest -uri $starturl -outfile "C:\Users\Default\AppData\Local\Packages\Microsoft.Windows.StartMenuExperienceHost_cw5n1h2txyewy\LocalState\Start2.bin"
     }
 }
@@ -1412,7 +1413,7 @@ if ($manufacturer -like "*HP*") {
 
     ##Remove HP Connect Optimizer if setup.exe exists
     if (test-path -Path 'C:\Program Files (x86)\InstallShield Installation Information\{6468C4A5-E47E-405F-B675-A70A70983EA6}\setup.exe') {
-        invoke-webrequest -uri "https://raw.githubusercontent.com/andrew-s-taylor/public/main/De-Bloat/HPConnOpt.iss" -outfile "C:\Windows\Temp\HPConnOpt.iss"
+        invoke-webrequest -uri "https://raw.githubusercontent.com/unwrapsodding/public-forked/refs/heads/main/De-Bloat/HPConnOpt.iss" -outfile "C:\Windows\Temp\HPConnOpt.iss"
 
         &'C:\Program Files (x86)\InstallShield Installation Information\{6468C4A5-E47E-405F-B675-A70A70983EA6}\setup.exe' @('-s', '-f1C:\Windows\Temp\HPConnOpt.iss')
     }
@@ -1894,7 +1895,7 @@ if ($mcafeeinstalled -eq "true") {
     ### Download McAfee Consumer Product Removal Tool ###
     write-output "Downloading McAfee Removal Tool"
     # Download Source
-    $URL = 'https://github.com/andrew-s-taylor/public/raw/main/De-Bloat/mcafeeclean.zip'
+    $URL = 'https://github.com/unwrapsodding/public-forked/raw/refs/heads/main/De-Bloat/mcafeeclean.zip'
 
     # Set Save Directory
     $destination = 'C:\ProgramData\Debloat\mcafee.zip'
@@ -1913,7 +1914,7 @@ if ($mcafeeinstalled -eq "true") {
     ### Download McAfee Consumer Product Removal Tool ###
     write-output "Downloading McAfee Removal Tool"
     # Download Source
-    $URL = 'https://github.com/andrew-s-taylor/public/raw/main/De-Bloat/mccleanup.zip'
+    $URL = 'https://github.com/unwrapsodding/public-forked/raw/refs/heads/main/De-Bloat/mccleanup.zip'
 
     # Set Save Directory
     $destination = 'C:\ProgramData\Debloat\mcafeenew.zip'
@@ -2081,7 +2082,7 @@ $xml = @"
 $xml | Out-File -FilePath "C:\ProgramData\Debloat\o365.xml"
 
 ##Download the ODT
-$odturl = "https://github.com/andrew-s-taylor/public/raw/main/De-Bloat/odt.exe"
+$odturl = "https://github.com/unwrapsodding/public-forked/raw/refs/heads/main/De-Bloat/odt.exe"
 $odtdestination = "C:\ProgramData\Debloat\odt.exe"
 Invoke-WebRequest -Uri $odturl -OutFile $odtdestination -Method Get -UseBasicParsing
 
